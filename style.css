@@ -1,63 +1,161 @@
-body {
-  font-family: Arial, sans-serif;
-  text-align: center;
+/* ================= Global Styles ================= */
+* {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  background-color: #f5f6fa;
 }
 
-header {
-  background-color: #4CAF50;
-  color: white;
-  padding: 20px;
-}
-
-header h1 {
-  margin: 0;
-}
-
-.tool-grid {
+body {
+  font-family: 'Arial', sans-serif;
+  background: linear-gradient(to right, #74ebd5, #ACB6E5);
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin: 20px;
-  gap: 20px;
-}
-
-.tool-card {
-  background-color: white;
+  flex-direction: column;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: flex-start;
   padding: 20px;
-  width: 250px;
-  border-radius: 10px;
-  box-shadow: 0px 3px 6px rgba(0,0,0,0.1);
+  color: #333;
 }
 
-.tool-card h2 {
-  margin-top: 0;
+h1 {
+  text-align: center;
+  color: #fff;
+  margin-bottom: 10px;
+  text-shadow: 2px 2px 5px rgba(0,0,0,0.3);
 }
 
-.btn {
-  display: inline-block;
-  padding: 10px 15px;
+p.description {
+  text-align: center;
+  max-width: 500px;
+  color: #fff;
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+
+/* ================= Card Layout ================= */
+.calculator-card {
+  background-color: rgba(255, 255, 255, 0.95);
+  padding: 30px 40px;
+  border-radius: 15px;
+  box-shadow: 0px 8px 20px rgba(0,0,0,0.2);
+  max-width: 400px;
+  width: 90%;
+  text-align: center;
+  margin-bottom: 30px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.calculator-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 12px 25px rgba(0,0,0,0.3);
+}
+
+/* ================= Inputs & Buttons ================= */
+input[type=number], select {
+  width: 80%;
+  padding: 12px;
+  margin: 10px 0;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input[type=number]:focus, select:focus {
+  outline: none;
+  border-color: #4CAF50;
+  box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+}
+
+button {
+  padding: 12px 25px;
+  margin-top: 10px;
   background-color: #4CAF50;
   color: white;
-  text-decoration: none;
-  border-radius: 5px;
-  margin-top: 10px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
 }
 
-.btn:hover {
+button:hover {
   background-color: #45a049;
+  transform: scale(1.03);
 }
 
-.btn.disabled {
-  background-color: grey;
-  pointer-events: none;
-  cursor: not-allowed;
+/* ================= Results ================= */
+#bmiResult, #ageResult, #calorieResult, #recommendation, #advice, #targetWeightInfo {
+  margin-top: 20px;
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 1.4;
 }
 
+/* BMI Colors */
+.underweight { color: #3498db; }
+.normal { color: #27ae60; }
+.overweight { color: #f39c12; }
+.obese { color: #e74c3c; }
+
+/* ================= Footer ================= */
 footer {
   margin-top: 40px;
-  padding: 20px;
-  background-color: #eee;
+  padding: 15px;
+  text-align: center;
+  color: #fff;
+  font-size: 14px;
+}
+
+footer a {
+  color: white;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+/* ================= Responsive Design ================= */
+@media (max-width: 500px) {
+  .calculator-card {
+    padding: 20px;
+  }
+
+  input[type=number], select {
+    width: 90%;
+  }
+
+  h1 {
+    font-size: 24px;
+  }
+
+  #bmiResult, #ageResult, #calorieResult, #recommendation, #advice, #targetWeightInfo {
+    font-size: 16px;
+  }
+}
+
+/* ================= Optional Dark Mode ================= */
+body.dark-mode {
+  background: linear-gradient(to right, #2c3e50, #34495e);
+  color: #ecf0f1;
+}
+
+body.dark-mode .calculator-card {
+  background-color: rgba(44, 62, 80, 0.95);
+  box-shadow: 0px 8px 20px rgba(0,0,0,0.5);
+}
+
+body.dark-mode input[type=number], body.dark-mode select {
+  background-color: #ecf0f1;
+  color: #2c3e50;
+}
+
+body.dark-mode button {
+  background-color: #3498db;
+}
+
+body.dark-mode button:hover {
+  background-color: #2980b9;
 }
