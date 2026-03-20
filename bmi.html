@@ -66,7 +66,7 @@
       font-size: 18px;
       font-weight: bold;
     }
-    #advice {
+    #advice, #targetWeightInfo {
       margin-top: 10px;
       font-size: 16px;
       font-weight: bold;
@@ -87,8 +87,9 @@
 
   <h1>🏥 BMI Calculator</h1>
   <p class="description">
-    BMI (Body Mass Index) is a rough estimate of body fat based on your height and weight. 
-    It may not be accurate for athletes, pregnant women, or people with high muscle mass.
+    BMI (Body Mass Index) is a rough estimate of body fat based on height and weight. 
+    It may not be accurate for athletes, pregnant women, or people with high muscle mass. 
+    You can also see your target weight range for a healthy BMI.
   </p>
 
   <div class="bmi-card">
@@ -97,6 +98,7 @@
     <button onclick="calculateBMI()">Calculate BMI</button>
     <p id="bmiResult"></p>
     <p id="advice"></p>
+    <p id="targetWeightInfo"></p>
   </div>
 
   <footer>
@@ -112,6 +114,7 @@
         document.getElementById("bmiResult").innerText = "Please enter valid numbers!";
         document.getElementById("bmiResult").className = "";
         document.getElementById("advice").innerText = "";
+        document.getElementById("targetWeightInfo").innerText = "";
         return;
       }
 
@@ -143,8 +146,14 @@
       document.getElementById("bmiResult").innerText = `BMI: ${bmi} — ${category}`;
       document.getElementById("bmiResult").className = className;
       document.getElementById("advice").innerText = advice;
+
+      // Calculate target weight range for healthy BMI (18.5 - 24.9)
+      let minWeight = (18.5 * h * h).toFixed(1);
+      let maxWeight = (24.9 * h * h).toFixed(1);
+      document.getElementById("targetWeightInfo").innerText =
+        `Target weight range for healthy BMI: ${minWeight} kg – ${maxWeight} kg`;
     }
   </script>
 
 </body>
-  </html>
+</html>
