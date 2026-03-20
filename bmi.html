@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BMI Calculator | Health Tools</title>
+  <style>
+    /* ===== Global ===== */
+    body {
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(to right, #74ebd5, #ACB6E5);
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      align-items: center;
+      justify-content: center;
+      color: #333;
+    }
+
+    h1 {
+      text-align: center;
+      color: #fff;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+    }
+
+    /* ===== Card Container ===== */
+    .bmi-card {
+      background-color: rgba(255, 255, 255, 0.95);
+      padding: 30px 40px;
+      border-radius: 15px;
+      box-shadow: 0px 8px 20px rgba(0,0,0,0.2);
+      max-width: 400px;
+      width: 90%;
+      text-align: center;
+    }
+
+    input[type=number] {
+      width: 80%;
+      padding: 12px;
+      margin: 10px 0;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+    }
+
+    button {
+      padding: 12px 25px;
+      margin-top: 10px;
+      background-color: #4CAF50;
+      color: white;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    #bmiResult {
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    /* ===== Category Colors ===== */
+    .underweight { color: #3498db; }
+    .normal { color: #27ae60; }
+    .overweight { color: #f39c12; }
+    .obese { color: #e74c3c; }
+
+    /* ===== Footer ===== */
+    footer {
+      margin-top: 40px;
+      padding: 15px;
+      text-align: center;
+      color: #fff;
+    }
+
+  </style>
+</head>
+<body>
+
+  <h1>🏥 BMI Calculator</h1>
+
+  <div class="bmi-card">
+    <p>Enter your details:</p>
+    <input type="number" id="weight" placeholder="Weight (kg)">
+    <input type="number" id="height" placeholder="Height (cm)">
+    <button onclick="calculateBMI()">Calculate BMI</button>
+    <p id="bmiResult"></p>
+  </div>
+
+  <footer>
+    <a href="index.html" style="color:white; text-decoration:none;">⬅ Back to Health Tools Hub</a>
+  </footer>
+
+  <script>
+    function calculateBMI() {
+      let weight = parseFloat(document.getElementById("weight").value);
+      let height = parseFloat(document.getElementById("height").value) / 100; // cm to m
+
+      if (!weight || !height) {
+        document.getElementById("bmiResult").innerHTML = "Please enter valid numbers!";
+        document.getElementById("bmiResult").className = "";
+        return;
+      }
+
+      let bmi = weight / (height * height);
+      bmi = bmi.toFixed(1);
+
+      let category = "";
+      let className = "";
+
+      if (bmi < 18.5) {
+        category = "Underweight";
+        className = "underweight";
+      } else if (bmi >= 18.5 && bmi < 25) {
+        category = "Normal";
+        className = "normal";
+      } else if (bmi >= 25 && bmi < 30) {
+        category = "Overweight";
+        className = "overweight";
+      } else {
+        category = "Obese";
+        className = "obese";
+      }
+
+      document.getElementById("bmiResult").innerHTML = `BMI: ${bmi} — ${category}`;
+      document.getElementById("bmiResult").className = className;
+    }
+  </script>
+
+</body>
+</html>
