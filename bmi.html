@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>BMI Calculator | Health Tools</title>
   <style>
-    /* ===== Global ===== */
     body {
       font-family: 'Arial', sans-serif;
       background: linear-gradient(to right, #74ebd5, #ACB6E5);
@@ -18,15 +17,19 @@
       justify-content: center;
       color: #333;
     }
-
     h1 {
       text-align: center;
       color: #fff;
-      margin-bottom: 20px;
+      margin-bottom: 10px;
       text-shadow: 2px 2px 5px rgba(0,0,0,0.3);
     }
-
-    /* ===== Card Container ===== */
+    p.description {
+      text-align: center;
+      max-width: 400px;
+      color: #fff;
+      margin-bottom: 20px;
+      font-size: 14px;
+    }
     .bmi-card {
       background-color: rgba(255, 255, 255, 0.95);
       padding: 30px 40px;
@@ -36,7 +39,6 @@
       width: 90%;
       text-align: center;
     }
-
     input[type=number] {
       width: 80%;
       padding: 12px;
@@ -45,7 +47,6 @@
       border: 1px solid #ccc;
       font-size: 16px;
     }
-
     button {
       padding: 12px 25px;
       margin-top: 10px;
@@ -57,43 +58,45 @@
       cursor: pointer;
       transition: 0.3s;
     }
-
     button:hover {
       background-color: #45a049;
     }
-
     #bmiResult {
       margin-top: 20px;
       font-size: 18px;
       font-weight: bold;
     }
-
-    /* ===== Category Colors ===== */
+    #advice {
+      margin-top: 10px;
+      font-size: 16px;
+      font-weight: bold;
+    }
     .underweight { color: #3498db; }
     .normal { color: #27ae60; }
     .overweight { color: #f39c12; }
     .obese { color: #e74c3c; }
-
-    /* ===== Footer ===== */
     footer {
       margin-top: 40px;
       padding: 15px;
       text-align: center;
       color: #fff;
     }
-
   </style>
 </head>
 <body>
 
   <h1>🏥 BMI Calculator</h1>
+  <p class="description">
+    BMI (Body Mass Index) is a rough estimate of body fat based on your height and weight. 
+    It may not be accurate for athletes, pregnant women, or people with high muscle mass.
+  </p>
 
   <div class="bmi-card">
-    <p>Enter your details:</p>
     <input type="number" id="weight" placeholder="Weight (kg)">
     <input type="number" id="height" placeholder="Height (cm)">
     <button onclick="calculateBMI()">Calculate BMI</button>
     <p id="bmiResult"></p>
+    <p id="advice"></p>
   </div>
 
   <footer>
@@ -102,39 +105,46 @@
 
   <script>
     function calculateBMI() {
-      let weight = parseFloat(document.getElementById("weight").value);
-      let height = parseFloat(document.getElementById("height").value) / 100; // cm to m
+      let w = parseFloat(document.getElementById("weight").value);
+      let h = parseFloat(document.getElementById("height").value)/100;
 
-      if (!weight || !height) {
-        document.getElementById("bmiResult").innerHTML = "Please enter valid numbers!";
+      if (!w || !h) {
+        document.getElementById("bmiResult").innerText = "Please enter valid numbers!";
         document.getElementById("bmiResult").className = "";
+        document.getElementById("advice").innerText = "";
         return;
       }
 
-      let bmi = weight / (height * height);
+      let bmi = w / (h*h);
       bmi = bmi.toFixed(1);
 
       let category = "";
+      let advice = "";
       let className = "";
 
       if (bmi < 18.5) {
         category = "Underweight";
+        advice = "You may need to eat more nutritious food.";
         className = "underweight";
       } else if (bmi >= 18.5 && bmi < 25) {
         category = "Normal";
+        advice = "Your weight is in a healthy range.";
         className = "normal";
       } else if (bmi >= 25 && bmi < 30) {
         category = "Overweight";
+        advice = "Consider a balanced diet and regular exercise.";
         className = "overweight";
       } else {
         category = "Obese";
+        advice = "Consult a doctor or dietitian for guidance.";
         className = "obese";
       }
 
-      document.getElementById("bmiResult").innerHTML = `BMI: ${bmi} — ${category}`;
+      document.getElementById("bmiResult").innerText = `BMI: ${bmi} — ${category}`;
       document.getElementById("bmiResult").className = className;
+      document.getElementById("advice").innerText = advice;
     }
   </script>
 
 </body>
-</html>
+  </html>
