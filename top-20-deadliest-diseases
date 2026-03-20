@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Top 20 Deadliest Diseases | Health Tools</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Table styling */
+    #diseaseTable {
+      width: 95%;
+      max-width: 1200px;
+      margin: 20px auto;
+      border-collapse: collapse;
+      background-color: rgba(255, 255, 255, 0.95);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0px 8px 20px rgba(0,0,0,0.2);
+    }
+    #diseaseTable th, #diseaseTable td {
+      padding: 12px 15px;
+      text-align: left;
+      vertical-align: top;
+    }
+    #diseaseTable th {
+      background-color: #4CAF50;
+      color: white;
+      position: sticky;
+      top: 0;
+    }
+    #diseaseTable tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+    .badge {
+      padding: 4px 8px;
+      border-radius: 6px;
+      color: white;
+      font-weight: bold;
+      font-size: 12px;
+    }
+    .high { background-color: #e74c3c; }
+    .medium { background-color: #f39c12; }
+    .low { background-color: #27ae60; }
+
+    /* Search bar */
+    #searchInput {
+      width: 90%;
+      max-width: 400px;
+      padding: 12px;
+      margin: 10px auto;
+      display: block;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+    }
+
+    /* Icons */
+    .icon-cell {
+      font-size: 20px;
+      text-align: center;
+    }
+
+    @media(max-width: 900px){
+      #diseaseTable th, #diseaseTable td{
+        font-size: 14px;
+        padding: 8px 10px;
+      }
+      .icon-cell{
+        font-size: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<h1>⚠ Top 20 Deadliest Diseases</h1>
+<p class="description">
+  This page lists the most serious diseases by mortality. Information is for awareness only. Always consult a doctor for diagnosis and treatment.
+</p>
+
+<input type="text" id="searchInput" onkeyup="filterTable()" placeholder="Search for diseases...">
+
+<table id="diseaseTable">
+  <thead>
+    <tr>
+      <th>Icon</th>
+      <th>Disease</th>
+      <th>Description</th>
+      <th>Symptoms</th>
+      <th>Severity</th>
+      <th>WHO / Reliable Link</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- 1. Heart Disease -->
+    <tr>
+      <td class="icon-cell">❤️</td>
+      <td>Heart Disease</td>
+      <td>Group of disorders affecting the heart and blood vessels, leading to heart attacks, heart failure, and strokes. Major global cause of death.</td>
+      <td>Chest pain, shortness of breath, fatigue</td>
+      <td><span class="badge high">High</span></td>
+      <td><a href="https://www.who.int/news-room/fact-sheets/detail/cardiovascular-diseases-(cvds)" target="_blank">WHO</a></td>
+    </tr>
+
+    <!-- 2. Stroke -->
+    <tr>
+      <td class="icon-cell">🧠</td>
+      <td>Stroke</td>
+      <td>Occurs when blood flow to the brain is interrupted or reduced, causing brain cell damage. Leading cause of long-term disability.</td>
+      <td>Sudden weakness, confusion, trouble speaking, vision problems</td>
+      <td><span class="badge high">High</span></td>
+      <td><a href="https://www.who.int/news-room/fact-sheets/detail/the-top-10-causes-of-death" target="_blank">WHO</a></td>
+    </tr>
+
+    <!-- 3. Lung Cancer -->
+    <tr>
+      <td class="icon-cell">💨</td>
+      <td>Lung Cancer</td>
+      <td>Malignant tumor growth in lung tissue, often linked to smoking, pollution, and occupational hazards. High mortality rate if detected late.</td>
+      <td>Persistent cough, chest pain, coughing blood, weight loss</td>
+      <td><span class="badge high">High</span></td>
+      <td><a href="https://www.who.int/news-room/fact-sheets/detail/cancer" target="_blank">WHO</a></td>
+    </tr>
+
+    <!-- 4. COPD -->
+    <tr>
+      <td class="icon-cell">🫁</td>
+      <td>Chronic Obstructive Pulmonary Disease (COPD)</td>
+      <td>Progressive lung disease causing airflow obstruction. Includes emphysema and chronic bronchitis, often due to smoking.</td>
+      <td>Shortness of breath, chronic cough, wheezing</td>
+      <td><span class="badge high">High</span></td>
+      <td><a href="https://www.who.int/news-room/fact-sheets/detail/chronic-obstructive-pulmonary-disease-(copd)" target="_blank">WHO</a></td>
+    </tr>
+
+    <!-- 5. Diabetes Type 2 -->
+    <tr>
+      <td class="icon-cell">🍬</td>
+      <td>Diabetes (Type 2)</td>
+      <td>Chronic condition affecting blood sugar control, leading to heart disease, kidney failure, and vision loss if unmanaged.</td>
+      <td>Increased thirst, frequent urination, fatigue, blurred vision</td>
+      <td><span class="badge high">High</span></td>
+      <td><a href="https://www.who.int/news-room/fact-sheets/detail/diabetes" target="_blank">WHO</a></td>
+    </tr>
+
+    <!-- 6. Lower Respiratory Infections -->
+    <tr>
+      <td class="icon-cell">🤧</td>
+      <td>Lower Respiratory Infections</td>
+      <td>Includes pneumonia and bronchitis, causing inflammation in lungs. Major cause of death in children under 5 and elderly.</td>
+      <td>Fever, cough, difficulty breathing</td>
+      <td><span class="badge high">High</span></td>
+      <td><a href="https://www.who.int/news-room/fact-sheets/detail/the-top-10-causes-of-death" target="_blank">WHO</a></td>
+    </tr>
+
+    <!-- 7. Kidney Disease -->
+    <tr>
+      <td class="icon-cell">🩺</td>
+      <td>Chronic Kidney Disease</td>
+      <td>Progressive loss of kidney function causing toxins to accumulate, leading to kidney failure and increased cardiovascular risk.</td>
+      <td>Swelling, fatigue, reduced urine output</td>
+      <td><span class="badge high">High</span></td>
+      <td><a href="https://www.who.int/news-room/fact-sheets/detail/kidney-disease" target="_blank">WHO</a></td>
+    </tr>
+
+    <!-- 8. Liver Disease -->
+    <tr>
+      <td class="icon-cell">🟤</td>
+      <td>Liver Disease</td>
+      <td>Includes cirrhosis, hepatitis, and fatty liver disease. Chronic liver damage can lead to liver failure or cancer.</td>
+      <td>Jaundice, fatigue, abdominal swelling</td>
+      <td><span class="badge high">High</span></td>
+      <td><a href="https://www.who.int/health-topics/hepatitis" target="_blank">WHO</a></td>
+    </tr>
+
+    <!-- 9. Pancreatic Cancer -->
+    <tr>
+      <td class="icon-cell">🍽️</td>
+      <td>Pancreatic Cancer</td>
+      <td>Malignant tumor in pancreas. Often detected late, leading to poor prognosis.</td>
+      <td>Abdominal pain, jaundice, weight loss</td>
+      <td><span class="badge high">High</span></td>
+      <td><a href="https://www.who.int/news-room/fact-sheets/detail/cancer" target="_blank">WHO</a></td>
+    </tr>
+
+    <!-- 10. Breast Cancer -->
+    <tr>
+      <td class="icon-cell">🎀</td>
+      <td>Breast Cancer</td>
+      <td>Malignant tumor in breast tissue. Early detection greatly improves survival rates.</td>
+      <td>Lump, nipple discharge, skin changes</td>
+      <td><span class="badge high">High</span></td>
+      <td><a href="https://www.who.int/news-room/fact-sheets/detail/cancer" target="_blank">WHO</a></td>
+    </tr>
+
+    <!-- 11. Colorectal Cancer -->
+    <tr>
+      <td class="icon-cell">🩸</td>
+      <td>Colorectal Cancer</td>
+      <td>Cancer in colon or rectum, leading to digestive complications and high mortality if detected late.</td>
+      <td>Blood in stool, abdominal pain, weight loss</td>
+      <td><span class="badge high">High</span></td>
+      <td><a href="https://www.who.int/news-room/fact-sheets/detail/cancer" target="_blank">WHO</a></td>
+    </tr>
+
+    <!-- 12. Prostate Cancer -->
+    <tr>
+      <td class="icon-cell">🧔</td>
+      <td>Prostate Cancer</td>
+      <td>Cancer of prostate gland, common in older men. Early detection via screening is key.</td>
+      <td>Difficulty urinating, blood in urine, pelvic pain</td>
+      <td><span class="badge high">High</span></td>
+      <td><a href="https://www.who.int/news-room/fact-sheets/detail/cancer" target="_blank">WHO</a></td>
+    </tr>
+
+    <!-- 13. HIV/AIDS -->
+    <tr>
+      <td class="icon-cell">🧬</td>
+      <td>HIV/AIDS</td>
+      <td>Virus weakens immune system, leading to opportunistic infections. Requires lifelong management with antiretroviral therapy.</td>
+      <td>Fatigue, weight loss, recurrent infections</td>
+      <td><span class="badge high">High</span></td>
+      <td><a href="https://www.who.int/news-room/fact-sheets/detail/hiv-aids" target="_blank">WHO</a></td>
+    </tr>
+
+    <!-- 14. Tuberculosis -->
+    <tr>
+      <td class="icon-cell">🦠</td>
+      <td>Tuberculosis (TB)</td>
+      <td>Bacterial infection usually affecting lungs, can spread to other organs. Requires full antibiotic treatment.</td>
+      <td>Persistent cough, fever, night sweats, weight loss</td>
+      <td><span class="badge high">High</span></td>
+      <td><a href="https://www.who.int/news-room/fact-sheets/detail/tuberculosis" target="_blank">WHO</a></td>
+    </tr>
+
+    <!-- 15. Malaria -->
+    <tr>
+      <td class="icon-cell">🦟</td>
+      <td>Malaria</td>
+      <td>Parasitic disease transmitted by mosquitoes, common in tropical regions. Can be fatal without treatment.</td>
+      <td>Fever, chills, headache, nausea</td>
+      <td><span class="badge high">High</span></td>
+      <td><a href="https://www.who.int/news-room/fact-sheets/detail/malaria" target="_blank">WHO</a></td>
+    </tr>
+
+    <!-- 16. Influenza & Pneumonia -->
+    <tr>
+      <td class="icon-cell">🤒</td>
+      <td>Influenza & Pneumonia</td>
+      <td>Viral or bacterial infections causing severe respiratory illness. Can be fatal in children and elderly.</td>
+      <td>Fever, cough, sore throat, body aches</td>
+      <td><span class="badge medium">Medium</span></td>
+      <td><a href="https://www.who.int/news-room/fact-sheets/detail/influenza-(seasonal)" target="_blank">WHO</a></td>
+    </tr>
+
+    <!-- 17. Alzheimer / Dementia -->
+    <tr>
+      <td class="icon-cell">🧓</td>
+      <td>Alzheimer's / Dementia</td>
+      <td>Progressive neurodegenerative disorders causing memory loss, cognitive decline, and behavioral changes.</td>
+      <td>Memory loss, confusion, disorientation</td>
+      <td><span class="badge medium">Medium</span></td>
+      <td><a href="https://www.who.int/news-room/fact-sheets/detail/dementia" target="_blank">WHO</a></td>
+    </tr>
+
+    <!-- 18. Depression / Mental Disorders -->
+    <tr>
+      <td class="icon-cell">🧠</td>
+      <td>Depression / Mental Health Disorders</td>
+      <td>Severe mental disorders can lead to suicide risk. Early intervention and counseling are crucial.</td>
+      <td>Persistent sadness, loss of interest, fatigue, suicidal thoughts</td>
+      <td><span class="badge medium">Medium</span></td>
+      <td><a href="https://www.who.int/news-room/fact-sheets/detail/mental-disorders" target="_blank">WHO</a></td>
+    </tr>
+
+    <!-- 19. Sepsis -->
+    <tr>
+      <td class="icon-cell">🧪</td>
+      <td>Sepsis</td>
+      <td>Life-threatening response to infection causing organ failure. Rapid treatment is critical for survival.</td>
+      <td>Fever, rapid heart rate, confusion, low blood pressure</td>
+      <td><span class="badge high">High</span></td>
+      <td><a href="https://www.who.int/news-room/fact-sheets/detail/sepsis" target="_blank">WHO</a></td>
+    </tr>
+
+    <!-- 20. COVID-19 Severe -->
+    <tr>
+      <td class="icon-cell">🦠</td>
+      <td>COVID-19 (Severe Cases)</td>
+      <td>Severe respiratory illness caused by SARS-CoV-2. Can cause pneumonia, multi-organ failure, and death in high-risk patients.</td>
+      <td>Fever, cough, difficulty breathing, fatigue</td>
+      <td><span class="badge high">High</span></td>
+      <td><a href="https://www.who.int/emergencies/diseases/novel-coronavirus-2019" target="_blank">WHO</a></td>
+    </tr>
+
+  </tbody>
+</table>
+
+<footer>
+  <a href="index.html">⬅ Back to Health Tools Hub</a>
+</footer>
+
+<script>
+  // ================= Search Filter =================
+  function filterTable() {
+    let input = document.getElementById("searchInput");
+    let filter = input.value.toLowerCase();
+    let table = document.getElementById("diseaseTable");
+    let tr = table.getElementsByTagName("tr");
+
+    for (let i = 1; i < tr.length; i++) {
+      let td = tr[i].getElementsByTagName("td")[1];
+      if (td) {
+        let txtValue = td.textContent || td.innerText;
+        tr[i].style.display = txtValue.toLowerCase().indexOf(filter) > -1 ? "" : "none";
+      }
+    }
+  }
+</script>
+
+</body>
+</html>
