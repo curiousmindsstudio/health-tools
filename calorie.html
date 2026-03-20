@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calorie Calculator | Health Tools</title>
+  <style>
+    /* ===== Global ===== */
+    body {
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(to right, #ff758c, #ff7eb3);
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      align-items: center;
+      justify-content: center;
+      color: #333;
+    }
+
+    h1 {
+      text-align: center;
+      color: #fff;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+    }
+
+    /* ===== Card Container ===== */
+    .calorie-card {
+      background-color: rgba(255, 255, 255, 0.95);
+      padding: 30px 40px;
+      border-radius: 15px;
+      box-shadow: 0px 8px 20px rgba(0,0,0,0.2);
+      max-width: 400px;
+      width: 90%;
+      text-align: center;
+    }
+
+    input[type=number], select {
+      width: 80%;
+      padding: 12px;
+      margin: 10px 0;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+    }
+
+    button {
+      padding: 12px 25px;
+      margin-top: 10px;
+      background-color: #ff3366;
+      color: white;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background-color: #e62e55;
+    }
+
+    #calorieResult {
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    /* ===== Footer ===== */
+    footer {
+      margin-top: 40px;
+      padding: 15px;
+      text-align: center;
+      color: #fff;
+    }
+
+  </style>
+</head>
+<body>
+
+  <h1>🍎 Calorie Calculator</h1>
+
+  <div class="calorie-card">
+    <p>Enter your details:</p>
+    <input type="number" id="weight" placeholder="Weight (kg)">
+    <input type="number" id="height" placeholder="Height (cm)">
+    <input type="number" id="age" placeholder="Age (years)">
+    <select id="gender">
+      <option value="" disabled selected>Select Gender</option>
+      <option value="male">Male</option>
+      <option value="female">Female</option>
+    </select>
+    <select id="activity">
+      <option value="" disabled selected>Activity Level</option>
+      <option value="1.2">Sedentary (little or no exercise)</option>
+      <option value="1.375">Lightly active (light exercise)</option>
+      <option value="1.55">Moderately active (moderate exercise)</option>
+      <option value="1.725">Very active (hard exercise)</option>
+      <option value="1.9">Extra active (very hard exercise)</option>
+    </select>
+    <button onclick="calculateCalories()">Calculate Calories</button>
+    <p id="calorieResult"></p>
+  </div>
+
+  <footer>
+    <a href="index.html" style="color:white; text-decoration:none;">⬅ Back to Health Tools Hub</a>
+  </footer>
+
+  <script>
+    function calculateCalories() {
+      let weight = parseFloat(document.getElementById("weight").value);
+      let height = parseFloat(document.getElementById("height").value);
+      let age = parseInt(document.getElementById("age").value);
+      let gender = document.getElementById("gender").value;
+      let activity = parseFloat(document.getElementById("activity").value);
+
+      if (!weight || !height || !age || !gender || !activity) {
+        document.getElementById("calorieResult").innerHTML = "Please fill all fields!";
+        return;
+      }
+
+      // Mifflin-St Jeor Equation
+      let bmr;
+      if (gender === "male") {
+        bmr = 10*weight + 6.25*height - 5*age + 5;
+      } else {
+        bmr = 10*weight + 6.25*height - 5*age - 161;
+      }
+
+      let calories = bmr * activity;
+      calories = Math.round(calories);
+
+      document.getElementById("calorieResult").innerHTML = 
+        `Your estimated daily calories: <strong>${calories} kcal</strong>`;
+    }
+  </script>
+
+</body>
+  </html>
