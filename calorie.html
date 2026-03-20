@@ -22,8 +22,16 @@
     h1 {
       text-align: center;
       color: #fff;
-      margin-bottom: 20px;
+      margin-bottom: 10px;
       text-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+    }
+
+    p.description {
+      text-align: center;
+      max-width: 400px;
+      color: #fff;
+      margin-bottom: 20px;
+      font-size: 14px;
     }
 
     /* ===== Card Container ===== */
@@ -68,6 +76,12 @@
       font-weight: bold;
     }
 
+    #recommendation {
+      margin-top: 10px;
+      font-size: 16px;
+      font-weight: bold;
+    }
+
     /* ===== Footer ===== */
     footer {
       margin-top: 40px;
@@ -75,12 +89,16 @@
       text-align: center;
       color: #fff;
     }
-
   </style>
 </head>
 <body>
 
   <h1>🍎 Calorie Calculator</h1>
+  <p class="description">
+    This calculator shows approximately how many calories your body needs per day. 
+    This is an estimate — actual needs may vary depending on metabolism, muscle mass, 
+    health conditions, and lifestyle.
+  </p>
 
   <div class="calorie-card">
     <p>Enter your details:</p>
@@ -100,8 +118,10 @@
       <option value="1.725">Very active (hard exercise)</option>
       <option value="1.9">Extra active (very hard exercise)</option>
     </select>
+    <input type="number" id="eaten" placeholder="Calories you actually eat per day">
     <button onclick="calculateCalories()">Calculate Calories</button>
     <p id="calorieResult"></p>
+    <p id="recommendation"></p>
   </div>
 
   <footer>
@@ -115,9 +135,11 @@
       let age = parseInt(document.getElementById("age").value);
       let gender = document.getElementById("gender").value;
       let activity = parseFloat(document.getElementById("activity").value);
+      let eaten = parseFloat(document.getElementById("eaten").value);
 
       if (!weight || !height || !age || !gender || !activity) {
         document.getElementById("calorieResult").innerHTML = "Please fill all fields!";
+        document.getElementById("recommendation").innerHTML = "";
         return;
       }
 
@@ -129,13 +151,27 @@
         bmr = 10*weight + 6.25*height - 5*age - 161;
       }
 
-      let calories = bmr * activity;
-      calories = Math.round(calories);
+      let calories = Math.round(bmr * activity);
 
       document.getElementById("calorieResult").innerHTML = 
         `Your estimated daily calories: <strong>${calories} kcal</strong>`;
+
+      // Recommendation based on actual calories eaten
+      if (!eaten) {
+        document.getElementById("recommendation").innerHTML = 
+          "Enter how many calories you eat to get recommendations.";
+      } else if (eaten < calories) {
+        document.getElementById("recommendation").innerHTML = 
+          "You may need to eat more calories to meet your body's needs.";
+      } else if (eaten > calories) {
+        document.getElementById("recommendation").innerHTML = 
+          "You may be consuming more calories than your body needs.";
+      } else {
+        document.getElementById("recommendation").innerHTML = 
+          "Your intake matches your estimated daily needs. Good job!";
+      }
     }
   </script>
 
 </body>
-  </html>
+    </html>
